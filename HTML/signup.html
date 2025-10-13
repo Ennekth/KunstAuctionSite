@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f8;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Container splits form and image */
+  .container {
+    display: flex;
+    flex: 1;
+  }
+
+  /* Registration form */
+  .form-section {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-section h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+
+  input[type="text"], 
+  input[type="email"], 
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .show-pass {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(90deg, magenta, cyan);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    opacity: 0.9;
+  }
+
+  /* Background image section */
+  .image-section {
+    flex: 1;
+    background: url('../ASSETS/Photos/appraiser.jpg') center/cover no-repeat;
+  }
+
+  /* Responsive: hide image on smaller screens */
+  @media (max-width: 768px) {
+    .image-section {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+    
+  <div class="form-section" >
+    <h1>Create Account</h1>
+
+    <form action="./register.php" method="post">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" id="fname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" id="lname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Create Password</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm">Confirm Password</label>
+        <input type="password" name="confirm" id="confirm" required>
+      </div>
+
+      <div class="show-pass">
+        <input type="checkbox" id="showPassword" onclick="togglePassword()">
+        <label for="showPassword">Show Password</label>
+      </div>
+
+      <button type="submit">Register</button>
+      <p class="signup-text">
+      Already have an account? <a href="./login.html">Login instead</a>
+    </p>
+    <button onclick="window.location.href = './index.html'; "><img src="../ASSETS/Photos/home.svg" alt=""></button>
+    </form>
+  </div>
+
+  <div class="image-section"></div>
+</div>
+
+<script>
+  function togglePassword() {
+    const password = document.getElementById("password");
+    const confirm = document.getElementById("confirm");
+    const type = password.type === "password" ? "text" : "password";
+    password.type = type;
+    confirm.type = type;
+  }
+</script>
+
+</body>
+</html>
